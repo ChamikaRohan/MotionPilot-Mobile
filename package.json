@@ -9,10 +9,20 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@tensorflow-models/handpose": "^0.1.0",
+    "@tensorflow/tfjs": "^4.20.0",
+    "@tensorflow/tfjs-react-native": "^1.0.0",
+    "axios": "^1.7.2",
     "expo": "~51.0.21",
+    "expo-camera": "~15.0.14",
+    "expo-image-picker": "~15.0.7",
     "expo-status-bar": "~1.12.1",
     "react": "18.2.0",
-    "react-native": "0.74.3"
+    "react-native": "0.74.3",
+    "react-native-camera": "^4.2.1",
+    "react-native-image-picker": "^7.1.2",
+    "react-native-vector-icons": "^10.1.0",
+    "expo-gl": "~14.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
