@@ -20,6 +20,7 @@ const RemoteControl = () => {
   const [visible, setVisible] = useState(false);
   const [ipText, setIpText] = useState('');
   const [ipAddress, setIpAddress] = useState('192.168.8.131');
+  const [response, setResponse] = useState('');
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
@@ -30,8 +31,33 @@ const RemoteControl = () => {
     hideModal();
   };
 
-  const handlePress = (value) => {
-    console.log(value);
+  const postRequest = async (value) => {
+    try {
+      const res = await fetch(`http://${ipAddress}:8088/action`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ data: value })
+      });
+  
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const resData = await res.json();
+      setResponse(resData.message);
+      console.log(resData.message);
+    } catch (error) {
+      console.error(error);
+      setResponse('Error: Could not reach the server.');
+      console.log('Error: Could not reach the server.');
+    }
+  };
+  
+
+  const handlePress = async (value) => {
+    postRequest(value);
   };
   
   return (

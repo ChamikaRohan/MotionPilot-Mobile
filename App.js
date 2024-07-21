@@ -1,13 +1,14 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import RemoteControl from './src/components/RemoteControl';
+import { Provider as PaperProvider } from 'react-native-paper';
 
-const App = () => {
+export default function App() {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <RemoteControl />
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <PaperProvider>
+        <RemoteControl />
+      </PaperProvider>
+    </SafeAreaProvider>
   );
-};
-
-export default App;
+}
